@@ -6,12 +6,18 @@ public class EmployeeWage {
     public static final int EMP_RATE_PER_HOUR = 20;
 
     public static final int NUM_OF_WORKING_DAYS = 20;
+    public static final int MAX_HRS_IN_MONTH = 100;
 
     public static void main(String[] args) {
         int empHrs = 0;
         int empWage = 0;
         int emp_total_wage = 0;
-        for (int day = 0; day < NUM_OF_WORKING_DAYS; day++) {
+        int total_working_days = 0;
+        int totalEmpHrs = 0;
+
+        while (totalEmpHrs < MAX_HRS_IN_MONTH &&
+                total_working_days < NUM_OF_WORKING_DAYS){
+            total_working_days++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
             switch (empCheck) {
@@ -25,6 +31,7 @@ public class EmployeeWage {
                 default:
                     empHrs = 0;
             }
+            totalEmpHrs +=empHrs;
             empWage = empHrs * EMP_RATE_PER_HOUR;
             emp_total_wage += empWage;
             System.out.println(" Employee Wage :" + empWage);
